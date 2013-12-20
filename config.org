@@ -1,5 +1,9 @@
-** 声明全局变量
+# -*- mode: org; coding: utf-8 -*-
+#+TITLE:Emacs config using org-mode
+#+AUTHOR:GRC <rongchaogao[at]gmail[dot]com>
+#+DATE: 2013-12-20
 
+** 声明全局变量
 #+begin_src emacs-lisp
   ;; global variables
   (defconst *is-mac-p* (eq system-type 'darwin))
@@ -7,7 +11,6 @@
 #+end_src
 
 ** 字体和编码
-
 #+begin_src emacs-lisp
   ;; unicad -  Universal Charset Auto Detector
   ;; http://www.emacswiki.org/emacs/Unicad
@@ -49,3 +52,20 @@
    (face-list))
 #+end_src
 
+** 启动画面
+#+BEGIN_SRC emacs-lisp
+  (setq inhibit-startup-message t)
+  (setq gnus-inhibit-startup-message t)
+#+END_SRC
+
+** 主题设置
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'load-path "~/.emacs.d/")
+  (require 'color-theme)
+  (color-theme-initialize)
+  (color-theme-gnome2)
+  #+END_SRC
+** 隐藏工具栏
+#+BEGIN_SRC emacs-lisp
+  (custom-set-variables '(tool-bar-mode nil))
+#+END_SRC
