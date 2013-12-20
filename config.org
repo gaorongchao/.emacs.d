@@ -3,14 +3,14 @@
 #+AUTHOR:GRC <rongchaogao[at]gmail[dot]com>
 #+DATE: 2013-12-20
 
-** 声明全局变量
+* 声明全局变量
 #+begin_src emacs-lisp
   ;; global variables
   (defconst *is-mac-p* (eq system-type 'darwin))
   (defconst *is-win-p* (eq system-type 'windows-nt))
 #+end_src
 
-** 字体和编码
+* 字体和编码
 #+begin_src emacs-lisp
   ;; unicad -  Universal Charset Auto Detector
   ;; http://www.emacswiki.org/emacs/Unicad
@@ -52,20 +52,117 @@
    (face-list))
 #+end_src
 
-** 启动画面
+* 启动画面
 #+BEGIN_SRC emacs-lisp
   (setq inhibit-startup-message t)
   (setq gnus-inhibit-startup-message t)
 #+END_SRC
 
-** 主题设置
+* 主题设置
 #+BEGIN_SRC emacs-lisp
   (add-to-list 'load-path "~/.emacs.d/")
   (require 'color-theme)
   (color-theme-initialize)
   (color-theme-gnome2)
   #+END_SRC
-** 隐藏工具栏
+* 隐藏工具栏
 #+BEGIN_SRC emacs-lisp
   (custom-set-variables '(tool-bar-mode nil))
 #+END_SRC
+* 编程设置
+** cperl-mode
+cperl is a more advanced mode for programming Perl than the default perl Mode.
+#+BEGIN_SRC emacs-lisp
+  ;;; cperl-mode
+  ;;; http://www.emacswiki.org/emacs/CPerlMode
+   (mapc (lambda (pair)
+           (if (eq (cdr pair) 'perl-mode)
+               (setcdr pair 'cperl-mode)))
+         (append auto-mode-alist interpreter-mode-alist))
+   ;; customizing cperl-mode
+   (defun wf-cperl-mode-init ()
+     (setq cperl-font-lock t
+           cperl-electric-keywords t
+           ;; http://www.emacswiki.org/emacs/IndentingPerl
+           cperl-indent-level 4
+           cperl-indent-parens-as-block t
+           cperl-close-paren-offset -4
+           cperl-continued-brace-offset -4
+           cperl-continued-statement-offset 4
+           cperl-extra-newline-before-brace t
+           cperl-brace-offset -4
+           cperl-label-offset -2
+           cperl-tab-always-indent nil
+           cperl-extra-newline-before-brace nil
+           cperl-extra-newline-before-brace-multiline nil)
+     (local-set-key (kbd "C-h f") 'cperl-perldoc)
+     (define-abbrev-table 'global-abbrev-table
+       '(("pdbg"   "use Data::Dumper qw( Dumper );\nwarn Dumper[];" nil 1)
+         ("phbp"   "#!/usr/bin/perl -w"                             nil 1)
+         ("pusc"   "use Smart::Comments;\n\n### "                   nil 1)
+         ("putm"   "use Test::More 'no_plan';"                      nil 1)))
+     (custom-set-faces
+      '(cperl-array-face ((t (:background nil :weight normal))))
+      '(cperl-hash-face  ((t (:background nil :weight normal))))))
+   (add-hook 'cperl-mode-hook 'wf-cperl-mode-init)
+#+END_SRC
+** c & cpp
+Major mode for editing c and cpp files.
+#+begin_src emacs-lisp
+  (add-hook 'c-mode-common-hook
+            (lambda ()
+              (turn-on-auto-fill)
+              (setq comment-column 60)
+              (modify-syntax-entry ?_ "w")     ; now '_' is not considered a word-delimiter
+              (c-set-style "ellemtel")         ; set indentation style
+              (local-set-key [(control tab)]   ; move to next tempo mark
+                             'tempo-forward-mark)))
+  (setq auto-mode-alist
+        (append '(("\\.h$" . c++-mode)) auto-mode-alist))
+#+end_src
+** auto-complete
+** LaTeX
+* org-mode
+Org mode is for keeping notes, maintaining TODO lists, planning projects, and authoring documents with a fast and effective plain-text system.
+#+begin_src emacs-lisp
+  (require 'org)
+  (require 'remember)
+  (require 'org-mouse)
+  
+  ;; I want files with the extension ".org" to open in org-mode.
+  (add-to-list 'auto-mode-alist
+               '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
+  
+  ;; Some basic keybindings.
+  (global-set-key "\C-cl" 'org-store-link)
+  (global-set-key "\C-ca" 'org-agenda)
+  (global-set-key "\C-cr" 'org-remember)
+  
+  ;; a basic set of keywords to start out
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "STRT(s)" "|" "DONE(d)")
+          (sequencep "WAIT(w@/!)" "|" "CANL(c@/!)")))
+  
+  (setq org-todo-keyword-faces
+        '(("TODO" :foreground "red" :weight bold)
+          ("DONE" :foreground "forest green" :weight bold)
+          ("WAIT" :foreground "orange" :weight bold)
+          ("CANL" :foreground "forest green" :weight bold)))
+  
+  ;; I use org's tag feature to implement contexts.
+  (setq org-tag-alist '(("OFFICE"  . ?o)
+                        ("HOME"    . ?h)
+                        ("SERVER"  . ?s)
+                        ("PROJECT" . ?p)))
+  
+  ;; I put the archive in a separate file, because the gtd file will
+  ;; probably already get pretty big just with current tasks.
+  (setq org-archive-location "%s_archive::")
+  
+  (defun org-summary-todo (n-done n-not-done)
+    "Switch entry to DONE when all subentries are done, to TODO otherwise."
+    (let (org-log-done org-log-states)   ; turn off logging
+      (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+  (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
+  
+#+end_src
