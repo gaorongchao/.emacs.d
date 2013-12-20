@@ -1,0 +1,10 @@
+.DS_Store
+
+*~
+*.elc
+
+*bak
+*bkp
+
+elpa/archives/*
+config.el
