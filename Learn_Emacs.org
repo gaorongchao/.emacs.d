@@ -1,5 +1,25 @@
 #+TAGS: OFFICE(o) HOME(h) SERER(s) PROJECT(p)
-how to learn emacs org
+My way to Learning Emacs
+* 安装
+从官网上下载window版本的emacs。然后解压就可以了。网址：
+http://ftp.gnu.org/gnu/emacs/windows/
+在window下安装以后，他的配置目录在：
+c:\Users\GRC\AppData\Roaming\ 文件里。可以把上述文件夹
+建立一个快捷方式，这样就能够快速进入这个文件夹，就可以省去
+修改注册表的麻烦了。关于配置在这里
+啰嗦两句：emacs文件有几种配置方式：第一：直接在上述目录中
+编辑.emacs文件；第二：直接在上述目录中编辑.emacs.el文件；
+第三：编辑上述目录中.emacs.d/init.el文件。eamcs是按照
+上述顺序找配置文件的。所以，如果你选择了第三种方式，一定要
+把.emacs 和.emacs.el都删除，要不然编辑.emacs.d/init.el
+是没有任何作用的。
+* 配置
+所有的配置，详情见init.el和config.el里面注释非常的详细。
+配置的关键在于吸取别人的精华。比如我这里主要就是从Kid的配置
+学习的。网上说的大牛的人，配置非常的详细，但是不一定你能够学
+来，反而会导致你一头雾水。所以还是一砖一瓦自己配置，比较靠谱。
+由于从Kid那里学习到用org模式配置的方法，所以每一个配置都有
+详细的解释说明。
 * 前言
 ** 怎么打开，关闭，保存
 打开：C-x C-f,然后输入文件名称，并且以.org结尾，如first.org\\

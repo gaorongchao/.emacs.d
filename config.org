@@ -59,6 +59,14 @@
 #+END_SRC
 
 * 主题设置
+下载color-themes的配色方案，然后把themes文件夹和
+color--theme.el放到.emacs.d的文件中。就可以了。
+然后当你重新打开emacs的时候，就会看到Tools里面有
+一个color-themes的选项了。你点击以后会发现里面有
+很多的配色方案，光标移动到某一个方案上按Enter就可以
+显示该方案。确定好自己选的themes以后在下面配置的
+最后一行修改。我现在用的是gnome2.你可以换成其他的。
+主题的名称如果有空格，用连字符代替空格。
 #+BEGIN_SRC emacs-lisp
   (add-to-list 'load-path "~/.emacs.d/")
   (require 'color-theme)
@@ -71,6 +79,7 @@
 #+END_SRC
 * 编程设置
 ** cperl-mode
+有一篇文章讲解cperl-modea: http://www.khngai.com/emacs/perl.php 
 cperl is a more advanced mode for programming Perl than the default perl Mode.
 #+BEGIN_SRC emacs-lisp
   ;;; cperl-mode
