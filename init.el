@@ -1,16 +1,24 @@
-;;1£º½ûÖ¹Æô¶¯»­Ãæ£º
+;;;; -*- mode: emacs-lisp; coding: utf-8 -*-
 
+;; require packages
+(require 'org-install)
+(require 'ob-tangle)
+
+;;1:ç¦æ­¢å¯åŠ¨ç”»é¢
 (setq inhibit-startup-message t)
 (setq gnus-inhibit-startup-message t)
 
-;;2£ºÅäÖÃ×ÖÌå
+;;2:é…ç½®æ±‡æ€»
+(org-babel-load-file "~/.emacs.d/config.org")
 
-;;3£º±³¾°ÉèÖÃ
-;; themes ºÍcolor-theme.el·Åµ½.emacs.dÖĞÈ»ºóÈçÏÂÉèÖÃ
+
+;;3:èƒŒæ™¯è®¾ç½®
+;; themes å’Œ color-theme.el æ”¾åˆ°.emacs.dä¸­ç„¶åè¿›è¡Œå¦‚ä¸‹è®¾ç½®
 (add-to-list 'load-path "~/.emacs.d/") 
 (require 'color-theme) 
 (color-theme-initialize) 
 (color-theme-gnome2)
 
-;;4£º Òş²Ø¹¤¾ßÀ¸
+
+;;4:éšè—å·¥å…·æ 
 (custom-set-variables '(tool-bar-mode nil))
