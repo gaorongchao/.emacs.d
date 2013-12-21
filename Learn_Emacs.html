@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>My way to Learning Emacs</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="My way to Learning Emacs"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-12-21T10:16+0800"/>
+<meta name="author" content=""/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">My way to Learning Emacs</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 安装</a></li>
+<li><a href="#sec-2">2 配置</a></li>
+<li><a href="#sec-3">3 前言</a>
+<ul>
+<li><a href="#sec-3-1">3.1 怎么打开，关闭，保存</a></li>
+<li><a href="#sec-3-2">3.2 怎么安装</a></li>
+<li><a href="#sec-3-3">3.3 不用.org的格式</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4 写文档的大纲结构</a>
+<ul>
+<li><a href="#sec-4-1">4.1 星号后要有空格才有用，所有到符号都要英文状态下输入</a></li>
+<li><a href="#sec-4-2">4.2 折叠与展开</a></li>
+<li><a href="#sec-4-3">4.3 目录等级的改变</a></li>
+<li><a href="#sec-4-4">4.4 Tag</a>
+<ul>
+<li><a href="#sec-4-4-1">4.4.1 加入到方法：</a></li>
+<li><a href="#sec-4-4-2">4.4.2 查找tag</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-5">4.5 在不同到目录间跳动</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5 表格</a>
+<ul>
+<li><a href="#sec-5-1">5.1 表格的补充</a></li>
+<li><a href="#sec-5-2">5.2 表格到自动对齐</a></li>
+<li><a href="#sec-5-3">5.3 光标在表格中移动</a></li>
+<li><a href="#sec-5-4">5.4 增加 删除 移动</a></li>
+<li><a href="#sec-5-5">5.5 表格到计算功能</a></li>
+<li><a href="#sec-5-6">5.6 行和列内容的表示</a></li>
+<li><a href="#sec-5-7">5.7 求和</a></li>
+<li><a href="#sec-5-8">5.8 公式到编辑</a></li>
+<li><a href="#sec-5-9">5.9 自动求和hf</a></li>
+<li><a href="#sec-5-10">5.10 改动数据后的重新计算</a></li>
+<li><a href="#sec-5-11">5.11 小数点位数到保留，制定输出格式</a></li>
+<li><a href="#sec-5-12">5.12 计算这里到内容还有很多，大家自己看文献吧</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6 GTD (get things done)</a>
+<ul>
+<li><a href="#sec-6-1">6.1 定义各种状态</a></li>
+<li><a href="#sec-6-2">6.2 任务进度</a>
+<ul>
+<li><a href="#sec-6-2-1">6.2.1 毕业论文[2/4]</a></li>
+</ul>
+</li>
+<li><a href="#sec-6-3">6.3 为任务添加Tag</a>
+<ul>
+<li><a href="#sec-6-3-1">6.3.1 全局添加TAG</a></li>
+<li><a href="#sec-6-3-2">6.3.2 局部添加变量</a></li>
+<li><a href="#sec-6-3-3">6.3.3 添加方法</a></li>
+</ul>
+</li>
+<li><a href="#sec-6-4">6.4 优先级(Pririty)</a>
+<ul>
+<li><a href="#sec-6-4-1">6.4.1 设置方法</a></li>
+</ul>
+</li>
+<li><a href="#sec-6-5">6.5 为项目添加SCHEDULED，DEADLINE，时间</a></li>
+<li><a href="#sec-6-6">6.6 Agent视图</a></li>
+<li><a href="#sec-6-7">6.7 里面还有好多的内容没有讲到，具体的大家可以参加manual？</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">7 export和babel输出</a>
+<ul>
+<li><a href="#sec-7-1">7.1 export输出</a>
+<ul>
+<li><a href="#sec-7-1-1">7.1.1 org输出pdf的问题</a></li>
+</ul>
+</li>
+<li><a href="#sec-7-2">7.2 babel,在org里插入代码片段</a></li>
+</ul>
+</li>
+<li><a href="#sec-8">8 后记</a></li>
+<li><a href="#sec-9">9 致谢</a></li>
+<li><a href="#sec-10">10 以后要整理到内容</a>
+<ul>
+<li><a href="#sec-10-1">10.1 中文到对齐</a></li>
+<li><a href="#sec-10-2">10.2 输出到格式到问题</a></li>
+<li><a href="#sec-10-3">10.3 行号到问题，好像还是没有输出？</a></li>
+<li><a href="#sec-10-4">10.4 配置保存，安装undo-tree</a></li>
+<li><a href="#sec-10-5">10.5 </a></li>
+</ul>
+</li>
+<li><a href="#sec-11">11 格式化</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 安装</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>从官网上下载window版本的emacs。然后解压就可以了。网址：
+<a href="http://ftp.gnu.org/gnu/emacs/windows/">http://ftp.gnu.org/gnu/emacs/windows/</a>
+在window下安装以后，他的配置目录在：
+c:\Users\GRC\AppData\Roaming\ 文件里。可以把上述文件夹
+建立一个快捷方式，这样就能够快速进入这个文件夹，就可以省去
+修改注册表的麻烦了。关于配置在这里
+啰嗦两句：emacs文件有几种配置方式：第一：直接在上述目录中
+编辑.emacs文件；第二：直接在上述目录中编辑.emacs.el文件；
+第三：编辑上述目录中.emacs.d/init.el文件。eamcs是按照
+上述顺序找配置文件的。所以，如果你选择了第三种方式，一定要
+把.emacs 和.emacs.el都删除，要不然编辑.emacs.d/init.el
+是没有任何作用的。
+</p></div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 配置</h2>
+<div class="outline-text-2" id="text-2">
+
+<p>所有的配置，详情见init.el和config.el里面注释非常的详细。
+配置的关键在于吸取别人的精华。比如我这里主要就是从Kid的配置
+学习的。网上说的大牛的人，配置非常的详细，但是不一定你能够学
+来，反而会导致你一头雾水。所以还是一砖一瓦自己配置，比较靠谱。
+由于从Kid那里学习到用org模式配置的方法，所以每一个配置都有
+详细的解释说明。
+</p></div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> 前言</h2>
+<div class="outline-text-2" id="text-3">
+
+
+</div>
+
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> 怎么打开，关闭，保存</h3>
+<div class="outline-text-3" id="text-3-1">
+
+<p>打开：C-x C-f,然后输入文件名称，并且以.org结尾，如first.org<br/>
+保存：：C-x C-s<br/>
+如果你真忘记了保存，那很多时候也是没有关系到，我们可以恢复过来，
+eamcs对每一个正在编辑到文件都有一个#filename#的自动保存文件，
+我们再次用emacs打开这个文件到时候，用 alt+x recover-file然后enter，
+然后选择y就可以了，几乎可以说是万无一失。当然还有撤销的功能 C-/
+</p></div>
+
+</div>
+
+<div id="outline-container-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> 怎么安装</h3>
+<div class="outline-text-3" id="text-3-2">
+
+<p>emacs 23 以后都是自带的，我就使用自带到了，但是把过程记录一下，或许以后会用到
+a:大家可以git clone一个最新的安装<br/>
+b:或者alt+x list-package用包管理器安装<br/>
+c:手动安装<br/>
+把org-mode加入load-path后， 
+</p>
+
+
+<pre class="example"><span class="linenr">1:  </span>(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+<span class="linenr">2:  </span>(add-to-list 'auto-mode-alist '("\\.txt$" . org-mode)) 
+</pre>
+
+
+<p>
+这个是让.org .txt这两种格式到文档默认用org-mode作为main mode，当然你也可以自己添加别的
+如果在别到mode下，比如说cperl-mode下，如果有大量到注释要写，那么直接M-x org-mode就可以了
+(defalias 'om ' org-mode) 
+(defalias 'elm 'emacs-lisp-mode) M+x om
+</p></div>
+
+</div>
+
+<div id="outline-container-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> 不用.org的格式</h3>
+<div class="outline-text-3" id="text-3-3">
+
+<p>只要在文件到顶部加一个如下到注释：
+#-*-mode:org-*-
+这样就可以了
+</p></div>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> 写文档的大纲结构</h2>
+<div class="outline-text-2" id="text-4">
+
+
+</div>
+
+<div id="outline-container-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> 星号后要有空格才有用，所有到符号都要英文状态下输入</h3>
+<div class="outline-text-3" id="text-4-1">
+
+<p>如果没有空格键，是无法实现分层到功能到。我们看上面不同到标题，显示了不同的到颜色。
+</p></div>
+
+</div>
+
+<div id="outline-container-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> 折叠与展开</h3>
+<div class="outline-text-3" id="text-4-2">
+
+<p>M-&lt;tab&gt; ：把所有到目录折叠
+&lt;tab&gt;   ：放到折叠区域,点好以前，可以展开
+</p></div>
+
+</div>
+
+<div id="outline-container-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> 目录等级的改变</h3>
+<div class="outline-text-3" id="text-4-3">
+
+<p>M-左右箭头，可以改变当前目录到等级，左箭头级别升高，右箭头级别降低
+M-S-左右箭头，改变本级别下所有内容级别到升高和降低。
+</p></div>
+
+</div>
+
+<div id="outline-container-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> Tag &nbsp;&nbsp;&nbsp;<span class="tag"><span class="__tag">讲解tag</span></span></h3>
+<div class="outline-text-3" id="text-4-4">
+
+<p>tag是为了方便查找
+</p>
+</div>
+
+<div id="outline-container-4-4-1" class="outline-4">
+<h4 id="sec-4-4-1"><span class="section-number-4">4.4.1</span> 加入到方法：</h4>
+<div class="outline-text-4" id="text-4-4-1">
+
+<p>光标放到某个节点，C-c两次，窗口到最下面就会提醒你输入tag到名称，输入以后，在添加tag节点到后面就会出现，如上面所以，
+我们为Tag添加了”讲解tag“到标签
+</p></div>
+
+</div>
+
+<div id="outline-container-4-4-2" class="outline-4">
+<h4 id="sec-4-4-2"><span class="section-number-4">4.4.2</span> 查找tag</h4>
+<div class="outline-text-4" id="text-4-4-2">
+
+<p>要查找某一个tag： C-c\ 然后输入你要查找到tag内容就可以了
+</p></div>
+</div>
+
+</div>
+
+<div id="outline-container-4-5" class="outline-3">
+<h3 id="sec-4-5"><span class="section-number-3">4.5</span> 在不同到目录间跳动</h3>
+<div class="outline-text-3" id="text-4-5">
+
+<p>C-c C-p
+C-c C-f
+C-c C-b
+C-c C-u
+自己尝试以下各个按键到移动方向
+</p></div>
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> 表格</h2>
+<div class="outline-text-2" id="text-5">
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left">Name</td><td class="left">Phone</td><td class="left">Age</td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+<div id="outline-container-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> 表格的补充</h3>
+<div class="outline-text-3" id="text-5-1">
+
+<p>首先我们输入表头，
+a:表头一行 按&lt;tab&gt;就会自动出来下一行
+b:把光标移动到表头到下一行，|打头，按&lt;tab&gt;
+c:把光标移动的表头到下一行，|打头后面加短横- 按&lt;tab&gt;
+前面a，b两种方法出现到是上面到图示到结构
+方法c出现到是下面这种结构
+</p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left">Name</td><td class="left">Phone</td><td class="left">Age</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+<div id="outline-container-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> 表格到自动对齐</h3>
+<div class="outline-text-3" id="text-5-2">
+
+<p>输入完一行到内容，按&lt;tab&gt;大多数情况都可以对齐，中文到对齐需要设置？？
+如果还没有对齐：C-c两次，就可以自动对齐了
+</p></div>
+
+</div>
+
+<div id="outline-container-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> 光标在表格中移动</h3>
+<div class="outline-text-3" id="text-5-3">
+
+<p>&lt;tab&gt;在一行里向后移动
+S-&lt;tab&gt;在一行里向前移动
+</p></div>
+
+</div>
+
+<div id="outline-container-5-4" class="outline-3">
+<h3 id="sec-5-4"><span class="section-number-3">5.4</span> 增加 删除 移动</h3>
+<div class="outline-text-3" id="text-5-4">
+
+<p>M-S-右箭头：增加列
+M-S-左箭头：删除列
+M-左右箭头：左右移动列
+M-上下箭头：上下移动列
+</p></div>
+
+</div>
+
+<div id="outline-container-5-5" class="outline-3">
+<h3 id="sec-5-5"><span class="section-number-3">5.5</span> 表格到计算功能</h3>
+<div class="outline-text-3" id="text-5-5">
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="right" /><col class="right" /><col class="right" /><col class="right" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="right">Test</th><th scope="col" class="right">Test</th><th scope="col" class="right">Test</th><th scope="col" class="right">Result</th></tr>
+</thead>
+<tbody>
+<tr><td class="right">11.78</td><td class="right">3</td><td class="right">5</td><td class="right">19.78</td></tr>
+</tbody>
+<tbody>
+<tr><td class="right">21.56</td><td class="right">5.2222</td><td class="right">3.111</td><td class="right">29.8932</td></tr>
+</tbody>
+<tbody>
+<tr><td class="right">36.34</td><td class="right">2</td><td class="right">1</td><td class="right">39.34</td></tr>
+</tbody>
+<tbody>
+<tr><td class="right">69.68</td><td class="right"></td><td class="right"></td><td class="right">69.68</td></tr>
+</tbody>
+</table>
+
+我们以上面到表格为例，简单讲解表格到计算，当然也可以用elisp或者lisp进行编程方式的计算
+</div>
+
+</div>
+
+<div id="outline-container-5-6" class="outline-3">
+<h3 id="sec-5-6"><span class="section-number-3">5.6</span> 行和列内容的表示</h3>
+<div class="outline-text-3" id="text-5-6">
+
+<p>行：@1 @2 @3&hellip;
+列：$1 $2 $3&hellip;
+可以绝对引用，也可以相对引用
+</p></div>
+
+</div>
+
+<div id="outline-container-5-7" class="outline-3">
+<h3 id="sec-5-7"><span class="section-number-3">5.7</span> 求和</h3>
+<div class="outline-text-3" id="text-5-7">
+
+<p>如果我们要求第二行到和，我们把光标放入最后Result到一列，然后输入=vsum($1..$3),得到结果19.78.
+列的求和，道理是一样到，我们把光标反在第一列到最后一个空格，然后输入=vsum(@1..@3)就得到结果了
+如果我们只想计算第1，3两列的和，=vsum($1,$3) 就可以了
+</p></div>
+
+</div>
+
+<div id="outline-container-5-8" class="outline-3">
+<h3 id="sec-5-8"><span class="section-number-3">5.8</span> 公式到编辑</h3>
+<div class="outline-text-3" id="text-5-8">
+
+<p>把光标放到Result里，然后按C-c=  就可以编辑我们的公式了
+</p></div>
+
+</div>
+
+<div id="outline-container-5-9" class="outline-3">
+<h3 id="sec-5-9"><span class="section-number-3">5.9</span> 自动求和hf</h3>
+<div class="outline-text-3" id="text-5-9">
+
+<p>我们用过Excel的都知道，我们求第一行以后，就可以通过下拉到方式，求出下面所有内容的和，这里也可以实现
+C-u C-c C-c  就可以了
+</p></div>
+
+</div>
+
+<div id="outline-container-5-10" class="outline-3">
+<h3 id="sec-5-10"><span class="section-number-3">5.10</span> 改动数据后的重新计算</h3>
+<div class="outline-text-3" id="text-5-10">
+
+<p>C-c*  就可以将所有到结果根据新的数据进行重新计算
+</p></div>
+
+</div>
+
+<div id="outline-container-5-11" class="outline-3">
+<h3 id="sec-5-11"><span class="section-number-3">5.11</span> 小数点位数到保留，制定输出格式</h3>
+<div class="outline-text-3" id="text-5-11">
+
+<p>假若说我们的最后结果要求保留两位小数
+我们只需要在编辑公式到后面：=vsum($1..$3);%.2f  这样就可以了
+</p></div>
+
+</div>
+
+<div id="outline-container-5-12" class="outline-3">
+<h3 id="sec-5-12"><span class="section-number-3">5.12</span> 计算这里到内容还有很多，大家自己看文献吧</h3>
+<div class="outline-text-3" id="text-5-12">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> <span class="todo TODO">TODO</span> GTD (get things done)</h2>
+<div class="outline-text-2" id="text-6">
+
+
+</div>
+
+<div id="outline-container-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> 定义各种状态</h3>
+<div class="outline-text-3" id="text-6-1">
+
+<p>可以进行全局到定义，也可以进行这个文档的局部定义
+(setq org-todo-keywords '((sequence "TODO(t)" "WAIT(w)" "STRT(s)" "|" "DONE(d)" "CANL(c)")))
+如果不想进行全局到定义，那么在你需要到文件到头部添加如下到内容也可以
+小括号里面到内容是快捷方式，只要输入其中的字母就可以修改状态
+其中CANL就是任务取消到意思
+ M-回车 就是新建一个heading
+ S-M-回车 就是新建一个TODO heading
+下面我们举例说明
+</p><ul>
+<li id="sec-6-1-1">吃饭<br/>
+</li>
+</ul>
+<ul>
+<li id="sec-6-1-2"><span class="todo TODO">TODO</span> 吃饭<br/>
+</li>
+</ul>
+<ul>
+<li id="sec-6-1-3"><span class="done DONE">DONE</span> 吃饭<br/>
+ <span class="timestamp-wrapper"><span class="timestamp-kwd">CLOSED: </span> <span class="timestamp">2013-01-30 三 15:40</span></span><br/>
+<ul>
+<li>State "DONE"       from "" <span class="timestamp-wrapper"> <span class="timestamp">2013-01-30 三 15:40</span></span>
+</li>
+</ul>
+
+<p>上面我们建立了三个吃饭的项目，初始状态是一样的，
+我们把光标放到第二个吃饭，然后按C-c C-t 然后下面到buffer里出现各种状态，我们用快捷键(t)选取了TODO 
+然后我们把光标放入第三个吃饭，C-c C-t 然后选DONE（快捷键d）第三行到内容就改变了。并标志来CLOSE和完成的时间
+当然我们吃过饭以后也可以对第二个吃饭进行修改，方法一样
+</p></li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> 任务进度</h3>
+<div class="outline-text-3" id="text-6-2">
+
+<p>我们用一个例子来说明任务进度到问题
+</p>
+</div>
+
+<div id="outline-container-6-2-1" class="outline-4">
+<h4 id="sec-6-2-1"><span class="section-number-4">6.2.1</span> 毕业论文[2/4]</h4>
+<div class="outline-text-4" id="text-6-2-1">
+
+<ul>
+<li id="sec-6-2-1-1"><span class="done DONE">DONE</span> 文献查询<br/>
+ <span class="timestamp-wrapper"><span class="timestamp-kwd">CLOSED: </span> <span class="timestamp">2013-01-30 三 15:47</span></span><br/>
+<ul>
+<li>State "DONE"       from "" <span class="timestamp-wrapper"> <span class="timestamp">2013-01-30 三 15:47</span></span>
+</li>
+</ul>
+
+</li>
+</ul>
+<ul>
+<li id="sec-6-2-1-2">WAITING 整理大纲<br/>
+</li>
+</ul>
+<ul>
+<li id="sec-6-2-1-3"><span class="todo TODO">TODO</span> 写综述<br/>
+</li>
+</ul>
+<ul>
+<li id="sec-6-2-1-4">CANCELLED 写致谢<br/>
+ <span class="timestamp-wrapper"><span class="timestamp-kwd">CLOSED: </span> <span class="timestamp">2013-01-30 三 15:48</span></span><br/>
+四项内容分别标记为DONE，WAIT TODO CANL,
+本来毕业论文后面括号里的内容是[/]里面是什么都没有的而现在变成来[2/4]
+这是因为所有到四个子项目中，一个DONE，一个CANL，相当与完成了两个，所以这样显示
+当然，中括号中到进度，我们也可以用[%]来代替，显示到就是百分比。内容一样，不再赘述。
+
+
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-6-3" class="outline-3">
+<h3 id="sec-6-3"><span class="section-number-3">6.3</span> 为任务添加Tag</h3>
+<div class="outline-text-3" id="text-6-3">
+
+<p>和TODO里面到内容是基本类似到
+</p>
+</div>
+
+<div id="outline-container-6-3-1" class="outline-4">
+<h4 id="sec-6-3-1"><span class="section-number-4">6.3.1</span> 全局添加TAG</h4>
+<div class="outline-text-4" id="text-6-3-1">
+
+<p>(set org-tag-alist '(("OFFICE" .?o)
+                     ("HOME"   .?h)
+                     ("SERVER“ .?s)
+                     ("PROJECT".?p))
+</p></div>
+
+</div>
+
+<div id="outline-container-6-3-2" class="outline-4">
+<h4 id="sec-6-3-2"><span class="section-number-4">6.3.2</span> 局部添加变量</h4>
+<div class="outline-text-4" id="text-6-3-2">
+
+<p>只需要在文件头添加下面到内容
+这里我需要再提醒一点，所有到设置里到标点符号都要是英文状态下输入，不然会不能够识别。修改了以后重新打开文件就可以了
+C-x  关闭当前到buffer
+C-x C-f  打开文件
+</p></div>
+
+</div>
+
+<div id="outline-container-6-3-3" class="outline-4">
+<h4 id="sec-6-3-3"><span class="section-number-4">6.3.3</span> 添加方法</h4>
+<div class="outline-text-4" id="text-6-3-3">
+
+<p>C-c C-c C-c
+我们举例说明,下面我们就为寒假作业这个项目添加了HOME这个tag：
+</p><ul>
+<li id="sec-6-3-3-1">寒假作业 &nbsp;&nbsp;&nbsp;<span class="tag"><span class="HOME">HOME</span></span><br/>
+一个项目可以添加多个tag，下面都有提示，大家自己看
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-6-4" class="outline-3">
+<h3 id="sec-6-4"><span class="section-number-3">6.4</span> 优先级(Pririty)</h3>
+<div class="outline-text-3" id="text-6-4">
+
+<p>我们项目里分为三个优先级：A B C 
+</p>
+</div>
+
+<div id="outline-container-6-4-1" class="outline-4">
+<h4 id="sec-6-4-1"><span class="section-number-4">6.4.1</span> 设置方法</h4>
+<div class="outline-text-4" id="text-6-4-1">
+
+<p>C-c ，后面是个逗号 或者
+M-&lt;up&gt; M+&lt;down&gt; 都可以
+我们下面通过一个例子来说明
+</p><ul>
+<li id="sec-6-4-1-1">暑假作业<br/>
+<ul>
+<li id="sec-6-4-1-1-1">数学<br/>
+</li>
+</ul>
+<ul>
+<li id="sec-6-4-1-1-2">英语<br/>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-6-5" class="outline-3">
+<h3 id="sec-6-5"><span class="section-number-3">6.5</span> 为项目添加SCHEDULED，DEADLINE，时间</h3>
+<div class="outline-text-3" id="text-6-5">
+
+<p>C-c C-d ：添加deadline
+C-c C-s ：添加scheduled
+举例：
+</p><ul>
+<li id="sec-6-5-1">数学<br/>
+ <span class="timestamp-wrapper"><span class="timestamp-kwd">DEADLINE: </span> <span class="timestamp">2013-01-30 三</span></span><br/>
+</li>
+</ul>
+<ul>
+<li id="sec-6-5-2">英语<br/>
+ <span class="timestamp-wrapper"><span class="timestamp-kwd">SCHEDULED: </span> <span class="timestamp">2013-01-30 三</span></span><br/>
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-6-6" class="outline-3">
+<h3 id="sec-6-6"><span class="section-number-3">6.6</span> Agent视图</h3>
+<div class="outline-text-3" id="text-6-6">
+
+<p>里面有grid和timeline
+进入agenda到入口：C-c a 
+从agenda里退出： q
+在agent里面可以看到所有到TODO，还有timeline，当然还有搜索功能？
+</p></div>
+
+</div>
+
+<div id="outline-container-6-7" class="outline-3">
+<h3 id="sec-6-7"><span class="section-number-3">6.7</span> <span class="todo TODO">TODO</span> 里面还有好多的内容没有讲到，具体的大家可以参加manual？</h3>
+<div class="outline-text-3" id="text-6-7">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> export和babel输出</h2>
+<div class="outline-text-2" id="text-7">
+
+
+</div>
+
+<div id="outline-container-7-1" class="outline-3">
+<h3 id="sec-7-1"><span class="section-number-3">7.1</span> export输出</h3>
+<div class="outline-text-3" id="text-7-1">
+
+<p>输出非常到方便，可以输出到html，docbook，latex，odf等等。输出到不同到文件中C-c C-e。
+然后可以输出到不同的文件中。
+</p><ul>
+<li>导出为
+</li>
+<li>
+</li>
+<li>
+</li>
+</ul>
+
+
+</div>
+
+<div id="outline-container-7-1-1" class="outline-4">
+<h4 id="sec-7-1-1"><span class="section-number-4">7.1.1</span> org输出pdf的问题</h4>
+<div class="outline-text-4" id="text-7-1-1">
+
+<p>这里主要是中文的问题，有中文存在的情况下，没有办法直接导出中文，所以我们提供几种解决方法。
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-7-2" class="outline-3">
+<h3 id="sec-7-2"><span class="section-number-3">7.2</span> babel,在org里插入代码片段</h3>
+<div class="outline-text-3" id="text-7-2">
+
+<p>如果你现在是在写文档，笔记，要插入代码片段，这个功能就非常的有用
+输入：&lt; s &lt;tab&gt;就可以插入一个代码区域，然后C-c ‘ 就可以对该段代码进行编辑，编辑完成以后，
+再按C-c ’ 就可以退出编辑，这里面有很多到参数可以添加，大家自己去看文档
+我们这里只介绍一下-n这个参数
+-n在输出到结果中可以显示 行号
++n可以接着上面到代码到行号往下顺延
+</p>
+
+
+
+<pre class="example"><span class="linenr">1:  </span>use strict;
+<span class="linenr">2:  </span>use warnings;
+<span class="linenr">3:  </span>my $name;
+<span class="linenr">4:  </span>while(&lt;IN&gt;)
+<span class="linenr">5:  </span>{
+<span class="linenr">6:  </span>    print "$name\n";
+<span class="linenr">7:  </span>}
+</pre>
+
+
+<p>
+babel支持到语言有很多种，在文档列表里面有。
+c语言的mode是cc-mode  perl到mode是 cperl mode
+</p></div>
+</div>
+
+</div>
+
+<div id="outline-container-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> 后记</h2>
+<div class="outline-text-2" id="text-8">
+
+<p>初次学习使用emacs和org，虽然还有很多到东西没有搞懂，但还是能够感到学到了很多东西
+</p></div>
+
+</div>
+
+<div id="outline-container-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> 致谢</h2>
+<div class="outline-text-2" id="text-9">
+
+<p>首先，要感谢kid能够在perlChina群里举办一个学习到讲座，让我打开这扇窗户，接触到新到世界，也是他
+不停到在解答我很弱智到问题。
+然后，要感谢老Xu等perlchina群里到所有的人
+</p></div>
+
+</div>
+
+<div id="outline-container-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> 以后要整理到内容</h2>
+<div class="outline-text-2" id="text-10">
+
+
+</div>
+
+<div id="outline-container-10-1" class="outline-3">
+<h3 id="sec-10-1"><span class="section-number-3">10.1</span> 中文到对齐</h3>
+<div class="outline-text-3" id="text-10-1">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-10-2" class="outline-3">
+<h3 id="sec-10-2"><span class="section-number-3">10.2</span> 输出到格式到问题</h3>
+<div class="outline-text-3" id="text-10-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-10-3" class="outline-3">
+<h3 id="sec-10-3"><span class="section-number-3">10.3</span> 行号到问题，好像还是没有输出？</h3>
+<div class="outline-text-3" id="text-10-3">
+
+</div>
+
+</div>
+
+<div id="outline-container-10-4" class="outline-3">
+<h3 id="sec-10-4"><span class="section-number-3">10.4</span> 配置保存，安装undo-tree</h3>
+<div class="outline-text-3" id="text-10-4">
+
+</div>
+
+</div>
+
+<div id="outline-container-10-5" class="outline-3">
+<h3 id="sec-10-5"><span class="section-number-3">10.5</span> </h3>
+<div class="outline-text-3" id="text-10-5">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> 格式化</h2>
+<div class="outline-text-2" id="text-11">
+
+<p>  <b>粗体</b>
+  <i>斜体</i>
+ <del>下划线</del>
+ 下标：H<sub>2</sub> 0
+ 上标：E=mc<sup>2</sup>
+ 等宽字：=git=
+</p></div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2013-12-21T10:16+0800</p>
+<p class="author">Author: </p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
