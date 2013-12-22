@@ -234,6 +234,35 @@ SCHEDULED: <2013-01-30 三>
 
 babel支持到语言有很多种，在文档列表里面有。
 c语言的mode是cc-mode  perl到mode是 cperl mode
+* shell
+直接在emacs中打开shell环境。M-x shell 或者M-x eshell。
+这样就可以打开命令行。从命令行中退出，可以用exit。也可以
+通过切换的方式C-x b。
+** ido
+方便补全路径 buffer name之类。
+内置，配置中开启。
+http://www.emacswiki.org/emacs/InteractivelyDoThings
+http://www.emacswiki.org/emacs/Smex
+** smex
+方便快速输入命令。
+方便在buffer间跳转。
+** 待安装插件
+EmacsWiki可以搜索这些东西。
++ 插件安装方法
+把el放在load-path。然后在配置中(require '....)
++ multi-web-mode
++ undo-tree
++ paredit 写lisp或者elisp
+#+BEGIN_SRC lisp
+  ;;load path
+  (let* ((my-lisp-dir "~/.emacs.d/")
+         (default-directory my-lisp-dir))
+    (setq load-path (cons my-lisp-dir load-path))
+    (normal-top-level-add-subdirs-to-load-path))
+#+END_SRC
++ elpa 安装模块用
+org auctex re-builder mweb slime
+
 * 后记
 初次学习使用emacs和org，虽然还有很多到东西没有搞懂，但还是能够感到学到了很多东西
 * 致谢

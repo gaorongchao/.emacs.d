@@ -114,6 +114,16 @@ cperl is a more advanced mode for programming Perl than the default perl Mode.
       '(cperl-array-face ((t (:background nil :weight normal))))
       '(cperl-hash-face  ((t (:background nil :weight normal))))))
    (add-hook 'cperl-mode-hook 'wf-cperl-mode-init)
+  
+  
+  
+  (global-set-key (kbd "C-c s") 'compile-dwim-compile)
+  (global-set-key (kbd "C-c r") 'compile-dwim-run)
+  (setq compilation-buffer-name-function 'pde-compilation-buffer-name)
+  (autoload 'compile-dwim-run "compile-dwim" "Build and run" t)
+  (autoload 'compile-dwim-compile "compile-dwim" "Compile or check syntax" t)
+  (autoload 'executable-chmod "executable"
+            "Make sure the file is executable.")
 #+END_SRC
 ** c & cpp
 Major mode for editing c and cpp files.
