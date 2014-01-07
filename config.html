@@ -135,8 +135,10 @@ for the JavaScript code in this tag.
 <li><a href="#sec-6-4">6.4 LaTeX</a></li>
 <li><a href="#sec-6-5">6.5 R语言配置(ESS)</a>
 <ul>
-<li><a href="#sec-6-5-1">6.5.1 ESS Shift Enter</a></li>
-<li><a href="#sec-6-5-2">6.5.2 切换左右屏和上下屏</a></li>
+<li><a href="#sec-6-5-1">6.5.1 ESS的安装和使用</a></li>
+<li><a href="#sec-6-5-2">6.5.2 ESS Shift Enter</a></li>
+<li><a href="#sec-6-5-3">6.5.3 切换左右屏和上下屏</a></li>
+<li><a href="#sec-6-5-4">6.5.4 ESS快捷键总结</a></li>
 </ul></li>
 </ul>
 </li>
@@ -378,6 +380,31 @@ cperl is a more advanced mode for programming Perl than the default perl Mode.
 <div class="outline-text-3" id="text-6-5">
 
 
+</div>
+
+<div id="outline-container-6-5-1" class="outline-4">
+<h4 id="sec-6-5-1"><span class="section-number-4">6.5.1</span> ESS的安装和使用</h4>
+<div class="outline-text-4" id="text-6-5-1">
+
+<ul>
+<li>安装R
+</li>
+<li>安装emacs
+</li>
+<li>下载ESS:
+</li>
+</ul>
+
+<p><a href="http://ess.r-project.org/index.php?Section=download">http://ess.r-project.org/index.php?Section=download</a>
+然后放在.emacs.d/site-lisp/下面，并重命名为ess。然后
+按照下面配置。
+</p><ul>
+<li>c-x 2可以带两个窗口，c-x 3 可以打开3个窗口
+</li>
+</ul>
+
+
+
 
 
 <pre class="example">(add-to-list 'load-path "~/.emacs.d/site-lisp/ess/lisp")
@@ -390,12 +417,13 @@ cperl is a more advanced mode for programming Perl than the default perl Mode.
 
 </pre>
 
+</div>
 
 </div>
 
-<div id="outline-container-6-5-1" class="outline-4">
-<h4 id="sec-6-5-1"><span class="section-number-4">6.5.1</span> ESS Shift Enter</h4>
-<div class="outline-text-4" id="text-6-5-1">
+<div id="outline-container-6-5-2" class="outline-4">
+<h4 id="sec-6-5-2"><span class="section-number-4">6.5.2</span> ESS Shift Enter</h4>
+<div class="outline-text-4" id="text-6-5-2">
 
 <p><a href="http://www.emacswiki.org/emacs/ESSShiftEnter">http://www.emacswiki.org/emacs/ESSShiftEnter</a>
 以下内容摘自上面网站。
@@ -473,9 +501,9 @@ cperl is a more advanced mode for programming Perl than the default perl Mode.
 
 </div>
 
-<div id="outline-container-6-5-2" class="outline-4">
-<h4 id="sec-6-5-2"><span class="section-number-4">6.5.2</span> 切换左右屏和上下屏</h4>
-<div class="outline-text-4" id="text-6-5-2">
+<div id="outline-container-6-5-3" class="outline-4">
+<h4 id="sec-6-5-3"><span class="section-number-4">6.5.3</span> 切换左右屏和上下屏</h4>
+<div class="outline-text-4" id="text-6-5-3">
 
 <p>我们在配置中设定了以后，但是可能会随着环境的变化
 而需要临时的改变，所以我们通过下面的方法进行修改：
@@ -483,6 +511,27 @@ c-x 1这个命令会关闭左右窗口，然后重新shift+enter
 这样打开的窗口和刚才的就不同了，换成不同于上面的另外
 一种方式。
 </p></div>
+
+</div>
+
+<div id="outline-container-6-5-4" class="outline-4">
+<h4 id="sec-6-5-4"><span class="section-number-4">6.5.4</span> ESS快捷键总结</h4>
+<div class="outline-text-4" id="text-6-5-4">
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left">c-c c-n</td><td class="left">当前行</td></tr>
+<tr><td class="left">c-c c-c</td><td class="left">当前段</td></tr>
+<tr><td class="left">c-c c-b</td><td class="left">当前整个文件</td></tr>
+<tr><td class="left">shift enter</td><td class="left">上面的作用</td></tr>
+</tbody>
+</table>
+
+ESS 要求编辑以.R为结尾的文件。
+
+</div>
 </div>
 </div>
 

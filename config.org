@@ -142,6 +142,15 @@ Major mode for editing c and cpp files.
 ** auto-complete
 ** LaTeX
 ** R语言配置(ESS)
+*** ESS的安装和使用
++ 安装R
++ 安装emacs
++ 下载ESS:
+http://ess.r-project.org/index.php?Section=download
+然后放在.emacs.d/site-lisp/下面，并重命名为ess。然后
+按照下面配置。
++ c-x 2可以带两个窗口，c-x 3 可以打开3个窗口
+
 #+BEGIN_SRC emacs-lisp
   (add-to-list 'load-path "~/.emacs.d/site-lisp/ess/lisp")
   ;;(require 'ess-site)
@@ -222,6 +231,34 @@ shift+Enter启动和运行R。
 c-x 1这个命令会关闭左右窗口，然后重新shift+enter
 这样打开的窗口和刚才的就不同了，换成不同于上面的另外
 一种方式。
+*** ESS快捷键总结
+| c-c c-n     | 当前行       |
+| c-c c-c     | 当前段       |
+| c-c c-b     | 当前整个文件 |
+| shift enter | 上面的作用   |
+ESS 要求编辑以.R为结尾的文件。
+
+*** R的自动补全插件:Autocomplete source for R
+http://www.emacswiki.org/emacs/ac-R.el
+下面文件以后，扔到上面的路径里,也就是/ess/lisp。
+然后在配置中添加一行,然后添加一些内容使R能够自动补全双引号，
+括号等。配置完成以后，要重启emacs生效。
+#+BEGIN_SRC emacs-lisp
+  (require 'ac-R)
+  
+  
+  ;;http://www.emacswiki.org/emacs/ESSAutoParens
+  ;; enable skeleton-pair insert globally
+     (setq skeleton-pair t)
+    ;;(setq skeleton-pair-on-word t)
+     (global-set-key (kbd "(") 'skeleton-pair-insert-maybe)
+     (global-set-key (kbd "[") 'skeleton-pair-insert-maybe)
+     (global-set-key (kbd "{") 'skeleton-pair-insert-maybe)
+     (global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
+     (global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
+     (global-set-key (kbd "\`") 'skeleton-pair-insert-maybe)
+     (global-set-key (kbd "<") 'skeleton-pair-insert-maybe)
+#+END_SRC
 * org-mode
 Org mode is for keeping notes, maintaining TODO lists, planning projects, and authoring documents with a fast and effective plain-text system.
 #+begin_src emacs-lisp
