@@ -141,6 +141,11 @@ Major mode for editing c and cpp files.
 #+end_src
 ** auto-complete
 ** LaTeX
+** R语言配置(ESS)
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'load-path "~/.emacs.d/site-lisp/ess/lisp")
+  (require 'ess-site)
+#+END_SRC
 * org-mode
 Org mode is for keeping notes, maintaining TODO lists, planning projects, and authoring documents with a fast and effective plain-text system.
 #+begin_src emacs-lisp
