@@ -139,6 +139,7 @@ for the JavaScript code in this tag.
 <li><a href="#sec-6-5-2">6.5.2 ESS Shift Enter</a></li>
 <li><a href="#sec-6-5-3">6.5.3 切换左右屏和上下屏</a></li>
 <li><a href="#sec-6-5-4">6.5.4 ESS快捷键总结</a></li>
+<li><a href="#sec-6-5-5">6.5.5 R的自动补全插件:Autocomplete source for R</a></li>
 </ul></li>
 </ul>
 </li>
@@ -530,6 +531,37 @@ c-x 1这个命令会关闭左右窗口，然后重新shift+enter
 </table>
 
 ESS 要求编辑以.R为结尾的文件。
+
+</div>
+
+</div>
+
+<div id="outline-container-6-5-5" class="outline-4">
+<h4 id="sec-6-5-5"><span class="section-number-4">6.5.5</span> R的自动补全插件:Autocomplete source for R</h4>
+<div class="outline-text-4" id="text-6-5-5">
+
+<p><a href="http://www.emacswiki.org/emacs/ac-R.el">http://www.emacswiki.org/emacs/ac-R.el</a>
+下面文件以后，扔到上面的路径里,也就是/ess/lisp。
+然后在配置中添加一行,然后添加一些内容使R能够自动补全双引号，
+括号等。配置完成以后，要重启emacs生效。
+</p>
+
+
+<pre class="example">(require 'ac-R)
+
+
+;;http://www.emacswiki.org/emacs/ESSAutoParens
+;; enable skeleton-pair insert globally
+   (setq skeleton-pair t)
+  ;;(setq skeleton-pair-on-word t)
+   (global-set-key (kbd "(") 'skeleton-pair-insert-maybe)
+   (global-set-key (kbd "[") 'skeleton-pair-insert-maybe)
+   (global-set-key (kbd "{") 'skeleton-pair-insert-maybe)
+   (global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
+   (global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
+   (global-set-key (kbd "\`") 'skeleton-pair-insert-maybe)
+   (global-set-key (kbd "&lt;") 'skeleton-pair-insert-maybe)
+</pre>
 
 </div>
 </div>
