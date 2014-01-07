@@ -144,8 +144,84 @@ Major mode for editing c and cpp files.
 ** R语言配置(ESS)
 #+BEGIN_SRC emacs-lisp
   (add-to-list 'load-path "~/.emacs.d/site-lisp/ess/lisp")
-  (require 'ess-site)
+  ;;(require 'ess-site)
+  ;;这句话，下面的代码里有了。
+  
+  ;(setq ess-eval-visibly-p nil)
+  (setq ess-ask-for-ess-directory nil)
+  (require 'ess-eldoc)
+  
 #+END_SRC
+*** ESS Shift Enter
+http://www.emacswiki.org/emacs/ESSShiftEnter
+以下内容摘自上面网站。
+下面这些配置，让我可以用一个快捷键绑定做到三件事情：
++ 如果R没有启动，他自动启动，并且打开一个窗口
++ 如果这段区域是活动的，那么计算这段区域
++ 其他情况下：运行当前行
+shift+Enter启动和运行R。
+一下代码为当R启动的时候，把emacs窗口分为上下两屏。
+当然我们也可以设置为左右两屏。
+#+BEGIN_SRC emacs-lisp
+  (setq ess-ask-for-ess-directory nil)
+   (setq ess-local-process-name "R")
+   (setq ansi-color-for-comint-mode 'filter)
+  
+   ;;下面几行的作用：设置自动下拉方式
+   ;;也就是你运行代码以后，R窗口会自动下拉，保持你最后运行的
+   ;;代码能后显示
+   (setq comint-prompt-read-only t)
+   (setq comint-scroll-to-bottom-on-input t)
+   (setq comint-scroll-to-bottom-on-output t)
+   (setq comint-move-point-for-output t)
+    
+  (defun my-ess-start-R ()
+     (interactive)
+     (if (not (member "*R*" (mapcar (function buffer-name) (buffer-list))))
+       (progn
+         (delete-other-windows)
+         (setq w1 (selected-window))
+         (setq w1name (buffer-name))
+         ;;这句话是左右分屏，下面注释的一句是上下分屏
+         (setq w2 (split-window w1 nil t))
+         ;;(setq w2 (split-window w1))
+         (R)
+         (set-window-buffer w2 "*R*")
+         (set-window-buffer w1 w1name))))
+    
+    
+  (defun my-ess-eval ()
+     (interactive)
+     (my-ess-start-R)
+     (if (and transient-mark-mode mark-active)
+         (call-interactively 'ess-eval-region)
+       (call-interactively 'ess-eval-line-and-step)))
+    
+    
+  (add-hook 'ess-mode-hook
+             '(lambda()
+                (local-set-key [(shift return)] 'my-ess-eval)))
+  
+  (add-hook 'inferior-ess-mode-hook
+             '(lambda()
+                (local-set-key [C-up] 'comint-previous-input)
+                (local-set-key [C-down] 'comint-next-input)))
+  
+  
+  ;;控制分屏
+  (add-hook 'Rnw-mode-hook
+            '(lambda()
+               (local-set-key [(shift return)] 'my-ess-eval)))
+  
+  
+   (require 'ess-site)
+#+END_SRC
+*** 切换左右屏和上下屏
+我们在配置中设定了以后，但是可能会随着环境的变化
+而需要临时的改变，所以我们通过下面的方法进行修改：
+c-x 1这个命令会关闭左右窗口，然后重新shift+enter
+这样打开的窗口和刚才的就不同了，换成不同于上面的另外
+一种方式。
 * org-mode
 Org mode is for keeping notes, maintaining TODO lists, planning projects, and authoring documents with a fast and effective plain-text system.
 #+begin_src emacs-lisp

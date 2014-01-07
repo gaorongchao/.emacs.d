@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs config using org-mode</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="Emacs config using org-mode"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-12-20"/>
+<meta name="author" content="GRC &lt;rongchaogao[at]gmail[dot]com&gt;"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Emacs config using org-mode</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 声明全局变量</a></li>
+<li><a href="#sec-2">2 字体和编码</a></li>
+<li><a href="#sec-3">3 启动画面</a></li>
+<li><a href="#sec-4">4 主题设置</a></li>
+<li><a href="#sec-5">5 隐藏工具栏</a></li>
+<li><a href="#sec-6">6 编程设置</a>
+<ul>
+<li><a href="#sec-6-1">6.1 cperl-mode</a></li>
+<li><a href="#sec-6-2">6.2 c &amp; cpp</a></li>
+<li><a href="#sec-6-3">6.3 auto-complete</a></li>
+<li><a href="#sec-6-4">6.4 LaTeX</a></li>
+<li><a href="#sec-6-5">6.5 R语言配置(ESS)</a>
+<ul>
+<li><a href="#sec-6-5-1">6.5.1 ESS Shift Enter</a></li>
+<li><a href="#sec-6-5-2">6.5.2 切换左右屏和上下屏</a></li>
+</ul></li>
+</ul>
+</li>
+<li><a href="#sec-7">7 org-mode</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 声明全局变量</h2>
+<div class="outline-text-2" id="text-1">
+
+
+
+
+<pre class="example">;; global variables
+(defconst *is-mac-p* (eq system-type 'darwin))
+(defconst *is-win-p* (eq system-type 'windows-nt))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 字体和编码</h2>
+<div class="outline-text-2" id="text-2">
+
+
+
+
+<pre class="example">;; unicad -  Universal Charset Auto Detector
+;; http://www.emacswiki.org/emacs/Unicad
+(require 'unicad nil 'noerror)
+
+;; enforce utf-8 as the default coding system
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-language-environment 'utf-8)
+;; backwards compatibility as default-buffer-file-coding-system
+;; is deprecated in 23.2.
+(if (boundp 'buffer-file-coding-system)
+    (setq-default buffer-file-coding-system 'utf-8)
+  (setq default-buffer-file-coding-system 'utf-8))
+;; Treat clipboard input as UTF-8 string first; compound text next, etc.
+(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+
+(setq system-time-locale "C")
+
+(when window-system
+  ;; Setting English Font
+              ;; 我们这里用的Monaco字体，因为window下没有，所以我们先安装
+              ;; 字体文件在font中，扔到C:\Windows\Fonts里面就可以了
+  (if *is-mac-p*
+      (set-face-attribute 'default nil :font "Monaco 14"))
+  (if *is-win-p*
+      (set-face-attribute 'default nil :font "Monaco 10"))
+  ;; Chinese Font
+  (dolist (charset '(kana han symbol cjk-misc bopomofo))
+    (set-fontset-font (frame-parameter nil 'font)
+                      charset
+                      (font-spec :family "Microsoft YaHei" :size 14))))
+
+(mapc
+ (lambda (face)
+   (set-face-attribute face nil :weight 'normal :underline nil))
+ (face-list))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> 启动画面</h2>
+<div class="outline-text-2" id="text-3">
+
+
+
+
+<pre class="example">(setq inhibit-startup-message t)
+(setq gnus-inhibit-startup-message t)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> 主题设置</h2>
+<div class="outline-text-2" id="text-4">
+
+<p>下载color-themes的配色方案，然后把themes文件夹和
+color&ndash;theme.el放到.emacs.d的文件中。就可以了。
+然后当你重新打开emacs的时候，就会看到Tools里面有
+一个color-themes的选项了。你点击以后会发现里面有
+很多的配色方案，光标移动到某一个方案上按Enter就可以
+显示该方案。确定好自己选的themes以后在下面配置的
+最后一行修改。我现在用的是gnome2.你可以换成其他的。
+主题的名称如果有空格，用连字符代替空格。
+</p>
+
+
+<pre class="example">(add-to-list 'load-path "~/.emacs.d/")
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-gnome2)
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> 隐藏工具栏</h2>
+<div class="outline-text-2" id="text-5">
+
+
+
+
+<pre class="example">(custom-set-variables '(tool-bar-mode nil))
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> 编程设置</h2>
+<div class="outline-text-2" id="text-6">
+
+
+</div>
+
+<div id="outline-container-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> cperl-mode</h3>
+<div class="outline-text-3" id="text-6-1">
+
+<p>有一篇文章讲解cperl-modea: <a href="http://www.khngai.com/emacs/perl.php">http://www.khngai.com/emacs/perl.php</a> 
+cperl is a more advanced mode for programming Perl than the default perl Mode.
+</p>
+
+
+<pre class="example">;;; cperl-mode
+;;; http://www.emacswiki.org/emacs/CPerlMode
+ (mapc (lambda (pair)
+         (if (eq (cdr pair) 'perl-mode)
+             (setcdr pair 'cperl-mode)))
+       (append auto-mode-alist interpreter-mode-alist))
+ ;; customizing cperl-mode
+ (defun wf-cperl-mode-init ()
+   (setq cperl-font-lock t
+         cperl-electric-keywords t
+         ;; http://www.emacswiki.org/emacs/IndentingPerl
+         cperl-indent-level 4
+         cperl-indent-parens-as-block t
+         cperl-close-paren-offset -4
+         cperl-continued-brace-offset -4
+         cperl-continued-statement-offset 4
+         cperl-extra-newline-before-brace t
+         cperl-brace-offset -4
+         cperl-label-offset -2
+         cperl-tab-always-indent nil
+         cperl-extra-newline-before-brace nil
+         cperl-extra-newline-before-brace-multiline nil)
+   (local-set-key (kbd "C-h f") 'cperl-perldoc)
+   (define-abbrev-table 'global-abbrev-table
+     '(("pdbg"   "use Data::Dumper qw( Dumper );\nwarn Dumper[];" nil 1)
+       ("phbp"   "#!/usr/bin/perl -w"                             nil 1)
+       ("pusc"   "use Smart::Comments;\n\n### "                   nil 1)
+       ("putm"   "use Test::More 'no_plan';"                      nil 1)))
+   (custom-set-faces
+    '(cperl-array-face ((t (:background nil :weight normal))))
+    '(cperl-hash-face  ((t (:background nil :weight normal))))))
+ (add-hook 'cperl-mode-hook 'wf-cperl-mode-init)
+
+
+
+(global-set-key (kbd "C-c s") 'compile-dwim-compile)
+(global-set-key (kbd "C-c r") 'compile-dwim-run)
+(setq compilation-buffer-name-function 'pde-compilation-buffer-name)
+(autoload 'compile-dwim-run "compile-dwim" "Build and run" t)
+(autoload 'compile-dwim-compile "compile-dwim" "Compile or check syntax" t)
+(autoload 'executable-chmod "executable"
+          "Make sure the file is executable.")
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> c &amp; cpp</h3>
+<div class="outline-text-3" id="text-6-2">
+
+<p>Major mode for editing c and cpp files.
+</p>
+
+
+<pre class="example">(add-hook 'c-mode-common-hook
+          (lambda ()
+            (turn-on-auto-fill)
+            (setq comment-column 60)
+            (modify-syntax-entry ?_ "w")     ; now '_' is not considered a word-delimiter
+            (c-set-style "ellemtel")         ; set indentation style
+            (local-set-key [(control tab)]   ; move to next tempo mark
+                           'tempo-forward-mark)))
+(setq auto-mode-alist
+      (append '(("\\.h$" . c++-mode)) auto-mode-alist))
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-6-3" class="outline-3">
+<h3 id="sec-6-3"><span class="section-number-3">6.3</span> auto-complete</h3>
+<div class="outline-text-3" id="text-6-3">
+
+</div>
+
+</div>
+
+<div id="outline-container-6-4" class="outline-3">
+<h3 id="sec-6-4"><span class="section-number-3">6.4</span> LaTeX</h3>
+<div class="outline-text-3" id="text-6-4">
+
+</div>
+
+</div>
+
+<div id="outline-container-6-5" class="outline-3">
+<h3 id="sec-6-5"><span class="section-number-3">6.5</span> R语言配置(ESS)</h3>
+<div class="outline-text-3" id="text-6-5">
+
+
+
+
+<pre class="example">(add-to-list 'load-path "~/.emacs.d/site-lisp/ess/lisp")
+;;(require 'ess-site)
+;;这句话，下面的代码里有了。
+
+;(setq ess-eval-visibly-p nil)
+(setq ess-ask-for-ess-directory nil)
+(require 'ess-eldoc)
+
+</pre>
+
+
+</div>
+
+<div id="outline-container-6-5-1" class="outline-4">
+<h4 id="sec-6-5-1"><span class="section-number-4">6.5.1</span> ESS Shift Enter</h4>
+<div class="outline-text-4" id="text-6-5-1">
+
+<p><a href="http://www.emacswiki.org/emacs/ESSShiftEnter">http://www.emacswiki.org/emacs/ESSShiftEnter</a>
+以下内容摘自上面网站。
+下面这些配置，让我可以用一个快捷键绑定做到三件事情：
+</p><ul>
+<li>如果R没有启动，他自动启动，并且打开一个窗口
+</li>
+<li>如果这段区域是活动的，那么计算这段区域
+</li>
+<li>其他情况下：运行当前行
+</li>
+</ul>
+
+<p>shift+Enter启动和运行R。
+一下代码为当R启动的时候，把emacs窗口分为上下两屏。
+当然我们也可以设置为左右两屏。
+</p>
+
+
+<pre class="example">(setq ess-ask-for-ess-directory nil)
+ (setq ess-local-process-name "R")
+ (setq ansi-color-for-comint-mode 'filter)
+
+ ;;下面几行的作用：设置自动下拉方式
+ ;;也就是你运行代码以后，R窗口会自动下拉，保持你最后运行的
+ ;;代码能后显示
+ (setq comint-prompt-read-only t)
+ (setq comint-scroll-to-bottom-on-input t)
+ (setq comint-scroll-to-bottom-on-output t)
+ (setq comint-move-point-for-output t)
+
+(defun my-ess-start-R ()
+   (interactive)
+   (if (not (member "*R*" (mapcar (function buffer-name) (buffer-list))))
+     (progn
+       (delete-other-windows)
+       (setq w1 (selected-window))
+       (setq w1name (buffer-name))
+       ;;这句话是左右分屏，下面注释的一句是上下分屏
+       (setq w2 (split-window w1 nil t))
+       ;;(setq w2 (split-window w1))
+       (R)
+       (set-window-buffer w2 "*R*")
+       (set-window-buffer w1 w1name))))
+
+
+(defun my-ess-eval ()
+   (interactive)
+   (my-ess-start-R)
+   (if (and transient-mark-mode mark-active)
+       (call-interactively 'ess-eval-region)
+     (call-interactively 'ess-eval-line-and-step)))
+
+
+(add-hook 'ess-mode-hook
+           '(lambda()
+              (local-set-key [(shift return)] 'my-ess-eval)))
+
+(add-hook 'inferior-ess-mode-hook
+           '(lambda()
+              (local-set-key [C-up] 'comint-previous-input)
+              (local-set-key [C-down] 'comint-next-input)))
+
+
+;;控制分屏
+(add-hook 'Rnw-mode-hook
+          '(lambda()
+             (local-set-key [(shift return)] 'my-ess-eval)))
+
+
+ (require 'ess-site)
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-6-5-2" class="outline-4">
+<h4 id="sec-6-5-2"><span class="section-number-4">6.5.2</span> 切换左右屏和上下屏</h4>
+<div class="outline-text-4" id="text-6-5-2">
+
+<p>我们在配置中设定了以后，但是可能会随着环境的变化
+而需要临时的改变，所以我们通过下面的方法进行修改：
+c-x 1这个命令会关闭左右窗口，然后重新shift+enter
+这样打开的窗口和刚才的就不同了，换成不同于上面的另外
+一种方式。
+</p></div>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> org-mode</h2>
+<div class="outline-text-2" id="text-7">
+
+<p>Org mode is for keeping notes, maintaining TODO lists, planning projects, and authoring documents with a fast and effective plain-text system.
+</p>
+
+
+<pre class="example">(require 'org)
+(require 'remember)
+(require 'org-mouse)
+
+;; I want files with the extension ".org" to open in org-mode.
+(add-to-list 'auto-mode-alist
+             '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
+
+;; Some basic keybindings.
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cr" 'org-remember)
+
+;; a basic set of keywords to start out
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "STRT(s)" "|" "DONE(d)")
+        (sequencep "WAIT(w@/!)" "|" "CANL(c@/!)")))
+
+(setq org-todo-keyword-faces
+      '(("TODO" :foreground "red" :weight bold)
+        ("DONE" :foreground "forest green" :weight bold)
+        ("WAIT" :foreground "orange" :weight bold)
+        ("CANL" :foreground "forest green" :weight bold)))
+
+;; I use org's tag feature to implement contexts.
+(setq org-tag-alist '(("OFFICE"  . ?o)
+                      ("HOME"    . ?h)
+                      ("SERVER"  . ?s)
+                      ("PROJECT" . ?p)))
+
+;; I put the archive in a separate file, because the gtd file will
+;; probably already get pretty big just with current tasks.
+(setq org-archive-location "%s_archive::")
+
+(defun org-summary-todo (n-done n-not-done)
+  "Switch entry to DONE when all subentries are done, to TODO otherwise."
+  (let (org-log-done org-log-states)   ; turn off logging
+    (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+(add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
+
+</pre>
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2013-12-20</p>
+<p class="author">Author: GRC &lt;rongchaogao[at]gmail[dot]com&gt;</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
