@@ -140,6 +140,8 @@ for the JavaScript code in this tag.
 <li><a href="#sec-6-5-3">6.5.3 切换左右屏和上下屏</a></li>
 <li><a href="#sec-6-5-4">6.5.4 ESS快捷键总结</a></li>
 <li><a href="#sec-6-5-5">6.5.5 R的自动补全插件:Autocomplete source for R</a></li>
+<li><a href="#sec-6-5-6">6.5.6 参数列表的显示</a></li>
+<li><a href="#sec-6-5-7">6.5.7 debug</a></li>
 </ul></li>
 </ul>
 </li>
@@ -226,6 +228,8 @@ for the JavaScript code in this tag.
 
 <pre class="example">(setq inhibit-startup-message t)
 (setq gnus-inhibit-startup-message t)
+(setq column-number-mode t)
+(setq line-number-mode t)
 </pre>
 
 
@@ -560,7 +564,38 @@ ESS 要求编辑以.R为结尾的文件。
    (global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
    (global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
    (global-set-key (kbd "\`") 'skeleton-pair-insert-maybe)
-   (global-set-key (kbd "&lt;") 'skeleton-pair-insert-maybe)
+   ;;(global-set-key (kbd "&lt;") 'skeleton-pair-insert-maybe)
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-6-5-6" class="outline-4">
+<h4 id="sec-6-5-6"><span class="section-number-4">6.5.6</span> 参数列表的显示</h4>
+<div class="outline-text-4" id="text-6-5-6">
+
+
+
+
+<pre class="example">(define-key ess-mode-map [f2] 'ess-r-args-show)
+(define-key ess-mode-map [f3] 'ess-r-args-insert)
+(define-key inferior-ess-mode-map [f2] 'ess-r-args-show)
+(define-key inferior-ess-mode-map [f3] 'ess-r-args-insert)
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-6-5-7" class="outline-4">
+<h4 id="sec-6-5-7"><span class="section-number-4">6.5.7</span> debug</h4>
+<div class="outline-text-4" id="text-6-5-7">
+
+
+
+
+<pre class="example">(require 'ess-tracebug)
 </pre>
 
 </div>
