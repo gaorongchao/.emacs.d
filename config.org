@@ -56,6 +56,8 @@
 #+BEGIN_SRC emacs-lisp
   (setq inhibit-startup-message t)
   (setq gnus-inhibit-startup-message t)
+  (setq column-number-mode t)
+  (setq line-number-mode t)
 #+END_SRC
 
 * 主题设置
@@ -257,7 +259,18 @@ http://www.emacswiki.org/emacs/ac-R.el
      (global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
      (global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
      (global-set-key (kbd "\`") 'skeleton-pair-insert-maybe)
-     (global-set-key (kbd "<") 'skeleton-pair-insert-maybe)
+     ;;(global-set-key (kbd "<") 'skeleton-pair-insert-maybe)
+#+END_SRC
+*** 参数列表的显示
+#+BEGIN_SRC emacs-lisp
+  (define-key ess-mode-map [f2] 'ess-r-args-show)
+  (define-key ess-mode-map [f3] 'ess-r-args-insert)
+  (define-key inferior-ess-mode-map [f2] 'ess-r-args-show)
+  (define-key inferior-ess-mode-map [f3] 'ess-r-args-insert)
+#+END_SRC
+*** debug
+#+BEGIN_SRC emacs-lisp
+  (require 'ess-tracebug)
 #+END_SRC
 * org-mode
 Org mode is for keeping notes, maintaining TODO lists, planning projects, and authoring documents with a fast and effective plain-text system.

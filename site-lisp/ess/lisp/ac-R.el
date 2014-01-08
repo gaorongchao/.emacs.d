@@ -105,8 +105,8 @@
 				(- (point) beg-of-line))
 			       )))
 
-
-(add-to-list 'ac-modes 'ess-mode)
+;;下面这句话会报错，不知道是什么原因，需要寻找。
+;;(add-to-list 'ac-modes 'ess-mode)
 
 (defun ess-ac-init ()
   (setq ac-sources '(ac-source-R ac-source-filename))
