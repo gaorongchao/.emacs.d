@@ -133,15 +133,16 @@ for the JavaScript code in this tag.
 <li><a href="#sec-6-2">6.2 c &amp; cpp</a></li>
 <li><a href="#sec-6-3">6.3 auto-complete</a></li>
 <li><a href="#sec-6-4">6.4 LaTeX</a></li>
-<li><a href="#sec-6-5">6.5 R语言配置(ESS)</a>
+<li><a href="#sec-6-5">6.5 lisp</a></li>
+<li><a href="#sec-6-6">6.6 R语言配置(ESS)</a>
 <ul>
-<li><a href="#sec-6-5-1">6.5.1 ESS的安装和使用</a></li>
-<li><a href="#sec-6-5-2">6.5.2 ESS Shift Enter</a></li>
-<li><a href="#sec-6-5-3">6.5.3 切换左右屏和上下屏</a></li>
-<li><a href="#sec-6-5-4">6.5.4 ESS快捷键总结</a></li>
-<li><a href="#sec-6-5-5">6.5.5 R的自动补全插件:Autocomplete source for R</a></li>
-<li><a href="#sec-6-5-6">6.5.6 参数列表的显示</a></li>
-<li><a href="#sec-6-5-7">6.5.7 debug</a></li>
+<li><a href="#sec-6-6-1">6.6.1 ESS的安装和使用</a></li>
+<li><a href="#sec-6-6-2">6.6.2 ESS Shift Enter</a></li>
+<li><a href="#sec-6-6-3">6.6.3 切换左右屏和上下屏</a></li>
+<li><a href="#sec-6-6-4">6.6.4 ESS快捷键总结</a></li>
+<li><a href="#sec-6-6-5">6.6.5 R的自动补全插件:Autocomplete source for R</a></li>
+<li><a href="#sec-6-6-6">6.6.6 参数列表的显示</a></li>
+<li><a href="#sec-6-6-7">6.6.7 debug</a></li>
 </ul></li>
 </ul>
 </li>
@@ -381,15 +382,33 @@ cperl is a more advanced mode for programming Perl than the default perl Mode.
 </div>
 
 <div id="outline-container-6-5" class="outline-3">
-<h3 id="sec-6-5"><span class="section-number-3">6.5</span> R语言配置(ESS)</h3>
+<h3 id="sec-6-5"><span class="section-number-3">6.5</span> lisp</h3>
 <div class="outline-text-3" id="text-6-5">
+
+<p>windows 下配置
+</p>
+
+
+<pre class="example">(setq inferior-lisp-program "clisp.exe")
+(load "C:\\quicklisp\\slime-helper.el")
+(require 'slime-autoloads)
+(slime-setup '(slime-fancy))
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-6-6" class="outline-3">
+<h3 id="sec-6-6"><span class="section-number-3">6.6</span> R语言配置(ESS)</h3>
+<div class="outline-text-3" id="text-6-6">
 
 
 </div>
 
-<div id="outline-container-6-5-1" class="outline-4">
-<h4 id="sec-6-5-1"><span class="section-number-4">6.5.1</span> ESS的安装和使用</h4>
-<div class="outline-text-4" id="text-6-5-1">
+<div id="outline-container-6-6-1" class="outline-4">
+<h4 id="sec-6-6-1"><span class="section-number-4">6.6.1</span> ESS的安装和使用</h4>
+<div class="outline-text-4" id="text-6-6-1">
 
 <ul>
 <li>安装R
@@ -426,9 +445,9 @@ cperl is a more advanced mode for programming Perl than the default perl Mode.
 
 </div>
 
-<div id="outline-container-6-5-2" class="outline-4">
-<h4 id="sec-6-5-2"><span class="section-number-4">6.5.2</span> ESS Shift Enter</h4>
-<div class="outline-text-4" id="text-6-5-2">
+<div id="outline-container-6-6-2" class="outline-4">
+<h4 id="sec-6-6-2"><span class="section-number-4">6.6.2</span> ESS Shift Enter</h4>
+<div class="outline-text-4" id="text-6-6-2">
 
 <p><a href="http://www.emacswiki.org/emacs/ESSShiftEnter">http://www.emacswiki.org/emacs/ESSShiftEnter</a>
 以下内容摘自上面网站。
@@ -506,9 +525,9 @@ cperl is a more advanced mode for programming Perl than the default perl Mode.
 
 </div>
 
-<div id="outline-container-6-5-3" class="outline-4">
-<h4 id="sec-6-5-3"><span class="section-number-4">6.5.3</span> 切换左右屏和上下屏</h4>
-<div class="outline-text-4" id="text-6-5-3">
+<div id="outline-container-6-6-3" class="outline-4">
+<h4 id="sec-6-6-3"><span class="section-number-4">6.6.3</span> 切换左右屏和上下屏</h4>
+<div class="outline-text-4" id="text-6-6-3">
 
 <p>我们在配置中设定了以后，但是可能会随着环境的变化
 而需要临时的改变，所以我们通过下面的方法进行修改：
@@ -519,9 +538,9 @@ c-x 1这个命令会关闭左右窗口，然后重新shift+enter
 
 </div>
 
-<div id="outline-container-6-5-4" class="outline-4">
-<h4 id="sec-6-5-4"><span class="section-number-4">6.5.4</span> ESS快捷键总结</h4>
-<div class="outline-text-4" id="text-6-5-4">
+<div id="outline-container-6-6-4" class="outline-4">
+<h4 id="sec-6-6-4"><span class="section-number-4">6.6.4</span> ESS快捷键总结</h4>
+<div class="outline-text-4" id="text-6-6-4">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
@@ -540,9 +559,9 @@ ESS 要求编辑以.R为结尾的文件。
 
 </div>
 
-<div id="outline-container-6-5-5" class="outline-4">
-<h4 id="sec-6-5-5"><span class="section-number-4">6.5.5</span> R的自动补全插件:Autocomplete source for R</h4>
-<div class="outline-text-4" id="text-6-5-5">
+<div id="outline-container-6-6-5" class="outline-4">
+<h4 id="sec-6-6-5"><span class="section-number-4">6.6.5</span> R的自动补全插件:Autocomplete source for R</h4>
+<div class="outline-text-4" id="text-6-6-5">
 
 <p><a href="http://www.emacswiki.org/emacs/ac-R.el">http://www.emacswiki.org/emacs/ac-R.el</a>
 下面文件以后，扔到上面的路径里,也就是/ess/lisp。
@@ -571,9 +590,9 @@ ESS 要求编辑以.R为结尾的文件。
 
 </div>
 
-<div id="outline-container-6-5-6" class="outline-4">
-<h4 id="sec-6-5-6"><span class="section-number-4">6.5.6</span> 参数列表的显示</h4>
-<div class="outline-text-4" id="text-6-5-6">
+<div id="outline-container-6-6-6" class="outline-4">
+<h4 id="sec-6-6-6"><span class="section-number-4">6.6.6</span> 参数列表的显示</h4>
+<div class="outline-text-4" id="text-6-6-6">
 
 
 
@@ -588,9 +607,9 @@ ESS 要求编辑以.R为结尾的文件。
 
 </div>
 
-<div id="outline-container-6-5-7" class="outline-4">
-<h4 id="sec-6-5-7"><span class="section-number-4">6.5.7</span> debug</h4>
-<div class="outline-text-4" id="text-6-5-7">
+<div id="outline-container-6-6-7" class="outline-4">
+<h4 id="sec-6-6-7"><span class="section-number-4">6.6.7</span> debug</h4>
+<div class="outline-text-4" id="text-6-6-7">
 
 
 
