@@ -145,7 +145,7 @@ Major mode for editing c and cpp files.
 ** LaTeX
 ** lisp
 windows 下配置
-#+BEGIN_SRC lisp
+#+BEGIN_SRC emacs-lisp
   (setq inferior-lisp-program "clisp.exe")
   (load "C:\\quicklisp\\slime-helper.el")
 #+END_SRC
