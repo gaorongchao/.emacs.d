@@ -143,6 +143,12 @@ Major mode for editing c and cpp files.
 #+end_src
 ** auto-complete
 ** LaTeX
+** lisp
+windows 下配置
+#+BEGIN_SRC lisp
+  (setq inferior-lisp-program "clisp.exe")
+  (load "C:\\quicklisp\\slime-helper.el")
+#+END_SRC
 ** R语言配置(ESS)
 *** ESS的安装和使用
 + 安装R
