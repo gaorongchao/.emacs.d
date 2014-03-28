@@ -144,6 +144,7 @@ Major mode for editing c and cpp files.
 ** auto-complete
 ** LaTeX
 #+BEGIN_SRC emacs-lisp
+  ;;添加新的org-export-latex-classes
   (require 'org-latex)
   (add-to-list 'org-export-latex-classes 
   '("ctexart" 
@@ -153,6 +154,18 @@ Major mode for editing c and cpp files.
        ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
        ("\\paragraph{%s}" . "\\paragraph*{%s}")
        ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+  
+  ;;程序代码的配置
+  ;;首先要安装listings这个宏包
+  ;;使用listing来配置
+  (setq org-export-latex-listings t)
+  (setq org-export-latex-listings-options
+  '(
+  ;;("backgroundcolor" "\\color{background}")
+  ("frame" "single")
+  ("frameround" "tttt")
+  
+                       ))
 #+END_SRC
 
 ** lisp
