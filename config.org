@@ -165,6 +165,7 @@ Major mode for editing c and cpp files.
   ;;("frame" "single")
   ("frame" "trBL")
   ("frameround" "fttt")
+  ("breaklines=true")
   
                        ))
 #+END_SRC
