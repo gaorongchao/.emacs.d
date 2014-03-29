@@ -162,8 +162,9 @@ Major mode for editing c and cpp files.
   (setq org-export-latex-listings-options
   '(
   ;;("backgroundcolor" "\\color{background}")
-  ("frame" "single")
-  ("frameround" "tttt")
+  ;;("frame" "single")
+  ("frame" "trBL")
+  ("frameround" "fttt")
   
                        ))
 #+END_SRC
