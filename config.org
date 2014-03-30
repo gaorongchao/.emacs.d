@@ -148,12 +148,34 @@ Major mode for editing c and cpp files.
   (require 'org-latex)
   (add-to-list 'org-export-latex-classes 
   '("ctexart" 
-  "\\documentclass{ctexart}"
+  "\\documentclass{ctexart}
+  \\usepackage[utf8]{inputenc}
+  \\usepackage[T1]{fontenc}
+  \\usepackage{fixltx2e}
+  \\usepackage{graphicx}
+  \\usepackage{longtable}
+  \\usepackage{float}
+  \\usepackage{wrapfig}
+  \\usepackage{soul}
+  \\usepackage{textcomp}
+  \\usepackage{marvosym}
+  \\usepackage{wasysym}
+  \\usepackage{latexsym}
+  \\usepackage{amssymb}
+  \\usepackage{hyperref}
+  \\usepackage{listings}
+  \\usepackage{color}
+  \\usepackage{xcolor}
+  \\definecolor{background}{rgb}{0.9,0.9,0.9}
+  \\tolerance=1000
+  [NO-DEFAULT-PACKAGES]
+  [NO-PACKAGES]"
        ("\\section{%s}" . "\\section*{%s}")
        ("\\subsection{%s}" . "\\subsection*{%s}")
        ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
        ("\\paragraph{%s}" . "\\paragraph*{%s}")
        ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+  ;;上面definecolor用来自定义染色
   
   ;;程序代码的配置
   ;;首先要安装listings这个宏包
@@ -161,13 +183,21 @@ Major mode for editing c and cpp files.
   (setq org-export-latex-listings t)
   (setq org-export-latex-listings-options
   '(
-  ;;("backgroundcolor" "\\color{background}")
+  ;;设置等宽字体
+  ("columns" "flexible")
+  ;;背景颜色的设置
+  ("backgroundcolor" "\\color{background}")
   ;;("frame" "single")
+  ;;代码框样式的设置
   ("frame" "trBL")
+  ;;代码框四个边角的设置
   ("frameround" "fttt")
+  ;;允许断行
   ("breaklines=true")
-  
-                       ))
+  ;;设置字体大小，字体
+  ;;("basicstyle" "\\ttfamily\\small")
+    
+                         ))
 #+END_SRC
 
 ** lisp
