@@ -166,6 +166,7 @@ Major mode for editing c and cpp files.
   \\usepackage{listings}
   \\usepackage{color}
   \\usepackage{xcolor}
+  \\usepackage[a4paper,left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
   \\definecolor{background}{rgb}{0.9,0.9,0.9}
   \\tolerance=1000
   [NO-DEFAULT-PACKAGES]
@@ -397,3 +398,5 @@ Org mode is for keeping notes, maintaining TODO lists, planning projects, and au
   (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
   
 #+end_src
+* export
+
