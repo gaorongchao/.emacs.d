@@ -133,7 +133,12 @@ for the JavaScript code in this tag.
 <li><a href="#sec-6-2">6.2 c &amp; cpp</a></li>
 <li><a href="#sec-6-3">6.3 auto-complete</a></li>
 <li><a href="#sec-6-4">6.4 LaTeX</a></li>
-<li><a href="#sec-6-5">6.5 lisp</a></li>
+<li><a href="#sec-6-5">6.5 lisp</a>
+<ul>
+<li><a href="#sec-6-5-1">6.5.1 slime</a></li>
+<li><a href="#sec-6-5-2">6.5.2 emacs-lisp</a></li>
+</ul>
+</li>
 <li><a href="#sec-6-6">6.6 R语言配置(ESS)</a>
 <ul>
 <li><a href="#sec-6-6-1">6.6.1 ESS的安装和使用</a></li>
@@ -147,6 +152,7 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#sec-7">7 org-mode</a></li>
+<li><a href="#sec-8">8 export</a></li>
 </ul>
 </div>
 </div>
@@ -377,6 +383,66 @@ cperl is a more advanced mode for programming Perl than the default perl Mode.
 <h3 id="sec-6-4"><span class="section-number-3">6.4</span> LaTeX</h3>
 <div class="outline-text-3" id="text-6-4">
 
+
+
+
+<pre class="example">;;添加新的org-export-latex-classes
+(require 'org-latex)
+(add-to-list 'org-export-latex-classes 
+'("ctexart" 
+"\\documentclass{ctexart}
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage{fixltx2e}
+\\usepackage{graphicx}
+\\usepackage{longtable}
+\\usepackage{float}
+\\usepackage{wrapfig}
+\\usepackage{soul}
+\\usepackage{textcomp}
+\\usepackage{marvosym}
+\\usepackage{wasysym}
+\\usepackage{latexsym}
+\\usepackage{amssymb}
+\\usepackage{hyperref}
+\\usepackage{listings}
+\\usepackage{color}
+\\usepackage{xcolor}
+\\definecolor{background}{rgb}{0.9,0.9,0.9}
+\\tolerance=1000
+[NO-DEFAULT-PACKAGES]
+[NO-PACKAGES]"
+     ("\\section{%s}" . "\\section*{%s}")
+     ("\\subsection{%s}" . "\\subsection*{%s}")
+     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+     ("\\paragraph{%s}" . "\\paragraph*{%s}")
+     ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+;;上面definecolor用来自定义染色
+
+;;程序代码的配置
+;;首先要安装listings这个宏包
+;;使用listing来配置
+(setq org-export-latex-listings t)
+(setq org-export-latex-listings-options
+'(
+;;设置等宽字体
+("columns" "flexible")
+;;背景颜色的设置
+("backgroundcolor" "\\color{background}")
+;;("frame" "single")
+;;代码框样式的设置
+("frame" "trBL")
+;;代码框四个边角的设置
+("frameround" "fttt")
+;;允许断行
+("breaklines=true")
+;;设置字体大小，字体
+;;("basicstyle" "\\ttfamily\\small")
+
+                       ))
+</pre>
+
+
 </div>
 
 </div>
@@ -385,16 +451,49 @@ cperl is a more advanced mode for programming Perl than the default perl Mode.
 <h3 id="sec-6-5"><span class="section-number-3">6.5</span> lisp</h3>
 <div class="outline-text-3" id="text-6-5">
 
-<p>windows 下配置
-</p>
+
+</div>
+
+<div id="outline-container-6-5-1" class="outline-4">
+<h4 id="sec-6-5-1"><span class="section-number-4">6.5.1</span> slime</h4>
+<div class="outline-text-4" id="text-6-5-1">
 
 
-<pre class="example">(setq inferior-lisp-program "clisp.exe")
-(load "C:\\quicklisp\\slime-helper.el")
-(require 'slime-autoloads)
-(slime-setup '(slime-fancy))
+
+
+<pre class="example">;; slime
+;;(when *hack-slime-p*
+  (if *is-mac-p*
+    (progn
+     (setq inferior-lisp-program "sbcl")
+     (load (expand-file-name "~/quicklisp/slime-helper.el"))))
+  (if *is-win-p*
+    (progn
+      (setq inferior-lisp-program "clisp.exe")
+      (load "C:\\quicklisp\\slime-helper.el")))
+
 </pre>
 
+</div>
+
+</div>
+
+<div id="outline-container-6-5-2" class="outline-4">
+<h4 id="sec-6-5-2"><span class="section-number-4">6.5.2</span> emacs-lisp</h4>
+<div class="outline-text-4" id="text-6-5-2">
+
+
+
+
+<pre class="example">;;; emacs-lisp-mode
+ ;; now '-' is not considered a word-delimiter
+ (add-hook 'emacs-lisp-mode-hook
+           '(lambda ()
+              (modify-syntax-entry ?- "w")))
+</pre>
+
+
+</div>
 </div>
 
 </div>
@@ -672,6 +771,15 @@ ESS 要求编辑以.R为结尾的文件。
 (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 
 </pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> export</h2>
+<div class="outline-text-2" id="text-8">
+
 
 </div>
 </div>
