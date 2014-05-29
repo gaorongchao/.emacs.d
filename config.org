@@ -148,8 +148,9 @@ Major mode for editing c and cpp files.
   (require 'org-latex)
   (add-to-list 'org-export-latex-classes 
   '("ctexart" 
-  "\\documentclass{ctexart}
+  "\\documentclass[fleqn]{ctexart}
   \\usepackage[utf8]{inputenc}
+  \\usepackage{mathtools}
   \\usepackage[T1]{fontenc}
   \\usepackage{fixltx2e}
   \\usepackage{graphicx}
