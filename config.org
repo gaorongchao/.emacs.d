@@ -70,7 +70,7 @@ color--theme.el放到.emacs.d的文件中。就可以了。
 最后一行修改。我现在用的是gnome2.你可以换成其他的。
 主题的名称如果有空格，用连字符代替空格。
 #+BEGIN_SRC emacs-lisp
-  (add-to-list 'load-path "~/.emacs.d/")
+  (add-to-list 'load-path "~/.emacs.d/lisp")
   (require 'color-theme)
   (color-theme-initialize)
   (color-theme-gnome2)
@@ -207,23 +207,22 @@ Major mode for editing c and cpp files.
 #+BEGIN_SRC emacs-lisp
   ;; slime
   ;;(when *hack-slime-p*
-    (if *is-mac-p*
-      (progn
-       (setq inferior-lisp-program "sbcl")
-       (load (expand-file-name "~/quicklisp/slime-helper.el"))))
-    (if *is-win-p*
-      (progn
-        (setq inferior-lisp-program "clisp.exe")
-        (load "C:\\quicklisp\\slime-helper.el")))
+  ;;  (if *is-mac-p*
+    ;;  (progn
+      ;; (setq inferior-lisp-program "sbcl")
+      ;; (load (expand-file-name "~/quicklisp/slime-helper.el"))))
+    ;;(if *is-win-p*
+      ;;(progn
+        ;;(setq inferior-lisp-program "clisp.exe")
+        ;;(load "C:\\quicklisp\\slime-helper.el")))
   
 #+END_SRC
 *** emacs-lisp
 #+BEGIN_SRC emacs-lisp
    ;;; emacs-lisp-mode
     ;; now '-' is not considered a word-delimiter
-    (add-hook 'emacs-lisp-mode-hook
-              '(lambda ()
-                 (modify-syntax-entry ?- "w")))
+    ;;(add-hook 'emacs-lisp-mode-hook
+                 ;;(modify-syntax-entry ?- "w")))
 #+END_SRC
 
 ** R语言配置(ESS)
